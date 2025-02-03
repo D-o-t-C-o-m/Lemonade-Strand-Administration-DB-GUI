@@ -9,7 +9,7 @@ public class DatabaseConfig {
 private static final Properties properties = new Properties();
 
 static {
-	try (InputStream input = DatabaseConfig.class.getClassLoader().getResourceAsStream("src/config.properties")) {
+	try (InputStream input = DatabaseConfig.class.getClassLoader().getResourceAsStream("config.properties")) {
 		if (input == null) {
 			System.out.println("Sorry, unable to find config.properties");
 			System.exit(1);
