@@ -95,15 +95,15 @@ private void createOrderPanel() {
 
 	JButton button3 = new JButton("Healthy Lemonade");
 	button3.setBackground(Color.cyan);
-	button3.setFont(new Font("Tahoma", Font.BOLD, 18));
+	button3.setFont(new Font("Tahoma", Font.BOLD, 14));
 	button3.setIcon(new ImageIcon(new ImageIcon("src/main/resources/pictures/waterIcon.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 
 	JButton button4 = new JButton("Original Lemonade");
 	button4.setBackground(Color.green);
-	button4.setFont(new Font("Tahoma", Font.BOLD, 18));
+	button4.setFont(new Font("Tahoma", Font.BOLD, 14));
 	button4.setIcon(new ImageIcon(new ImageIcon("src/main/resources/pictures/lemonadeIcon.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 
-	Dimension buttonSize = new Dimension(250, 80);
+	Dimension buttonSize = new Dimension(230, 80);
 	button3.setPreferredSize(buttonSize);
 	button4.setPreferredSize(buttonSize);
 
