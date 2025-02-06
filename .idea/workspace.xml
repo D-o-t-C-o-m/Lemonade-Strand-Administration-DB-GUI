@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="made product query better">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Changed graphical format again">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/GraphicalUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/GraphicalUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1738595673790</updated>
       <workItem from="1738595675147" duration="13237000" />
+      <workItem from="1738812488873" duration="4164000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -86,7 +88,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738627136156</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changed graphical format again">
+      <option name="closed" value="true" />
+      <created>1738627822660</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738627822660</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +105,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Forking from the CLI version to begin conversion to Database from CSV and start on Graphical UI." />
     <MESSAGE value="made product query better" />
-    <option name="LAST_COMMIT_MESSAGE" value="made product query better" />
+    <MESSAGE value="Changed graphical format again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed graphical format again" />
   </component>
 </project>
