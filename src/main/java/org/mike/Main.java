@@ -33,7 +33,7 @@ public static void main(String[] args) throws IOException, IDNotUniqueException 
 
 
 
-	GraphicalUI graphicalUI = new GraphicalUI(orderService);
+	GraphicalUI graphicalUI = new GraphicalUI();
 	System.out.println("Welcome to the Lemonade Stand Administration App.");
 	userInterface.runMenu();
 
