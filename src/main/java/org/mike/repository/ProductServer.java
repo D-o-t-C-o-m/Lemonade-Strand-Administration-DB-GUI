@@ -1,7 +1,7 @@
 package org.mike.repository;
 
 import java.sql.SQLException;
-import org.mike.MySQLConnection;
+import org.mike.Utils.MySQLConnection;
 
 
 

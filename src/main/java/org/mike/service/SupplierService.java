@@ -9,8 +9,8 @@ import org.mike.validators.SupplierValidator;
 import java.io.FileNotFoundException;
 
 public class SupplierService {
-private SupplierValidator supplierValidator;
-private GenericRepository<Supplier> supplierRepository;
+private final SupplierValidator supplierValidator;
+private final GenericRepository<Supplier> supplierRepository;
 
 public SupplierService(GenericRepository<Supplier> supplierRepository) {
 	this.supplierRepository = supplierRepository;

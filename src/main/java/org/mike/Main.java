@@ -1,12 +1,14 @@
 package org.mike;
 
+import org.mike.DAO.productDao;
+import org.mike.domain.Product;
+import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.repository.*;
 import org.mike.service.LemonadeService;
 import org.mike.service.OrderService;
 import org.mike.service.ProductService;
 import org.mike.service.SupplierService;
-import org.mike.userinterface.GraphicalUI;
 import org.mike.userinterface.UserInterface;
 import org.mike.validators.ProductValidator;
 
@@ -33,9 +35,21 @@ public static void main(String[] args) throws IOException, IDNotUniqueException 
 
 
 
-	GraphicalUI graphicalUI = new GraphicalUI();
+	//GraphicalUI graphicalUI = new GraphicalUI();
 	System.out.println("Welcome to the Lemonade Stand Administration App.");
-	userInterface.runMenu();
+	//userInterface.runMenu();
+
+	productDao userDao = new productDao();
+	Product item = new Product();
+	item.setProductID(540);
+	item.setName("Artificial Sweetener");
+	item.setDescription("Sweetener for people with BEETUS");
+	item.setPrice(8);
+	item.setQuantity(120);
+	Supplier supplier = supplierRepository.findById(2);
+	item.setSupplier(supplier);
+	userDao.saveProduct(item);
+	System.out.println("Item saved successfully!");
 
 }
 

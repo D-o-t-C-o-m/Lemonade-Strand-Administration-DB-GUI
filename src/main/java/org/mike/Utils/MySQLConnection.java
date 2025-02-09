@@ -1,4 +1,4 @@
-package org.mike;
+package org.mike.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ public static Connection connect() throws SQLException {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
-		// Get database credentials from org.mike.DatabaseConfig class
+		// Get database credentials from org.mike.Utils.DatabaseConfig class
 		var jdbcUrl = DatabaseConfig.getDbUrl();
 		var user = DatabaseConfig.getDbUsername();
 		var password = DatabaseConfig.getDbPassword();

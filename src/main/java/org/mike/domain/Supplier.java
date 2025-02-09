@@ -1,20 +1,38 @@
 package org.mike.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.util.Objects;
 
-public class Supplier extends Entity{
+@Entity
+@Table (name="supplier_info")
+public class Supplier extends org.mike.domain.Entity {
+
+@Id
+@Column(name = "supplierID")
+private int supplierID;
+@Column(name = "supplierName")
 private String name;
+@Column(name = "supplierEmail")
 private String email;
 
 public Supplier() {
 }
 
 public Supplier(Integer id, String name, String email) {
-	super.id = id;
+	this.supplierID = id;
 	this.name = name;
 	this.email = email;
 }
-
+public int getId() {
+	return supplierID;
+}
+public void setId(int id) {
+	this.supplierID = id;
+}
 public String getName() {
 	return name;
 }
@@ -41,6 +59,6 @@ public boolean equals(Object o) {
 
 @Override
 public String toString() {
-	return "Supplier{id=" + id + ", name='" + name + '\'' + ", email='" + email + "'" + "}";
+	return "Supplier{id=" + supplierID + ", name='" + name + '\'' + ", email='" + email + "'" + "}";
 }
 }

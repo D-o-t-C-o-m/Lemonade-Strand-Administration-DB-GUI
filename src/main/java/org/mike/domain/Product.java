@@ -1,14 +1,29 @@
 package org.mike.domain;
 
-public class Product extends Entity{
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="products")
+public class Product extends org.mike.domain.Entity {
+@Id
+@Column(name = "productID")
+private int productID;
+@Column(name = "productName")
 private String name;
+@Column(name = "productDescription")
 private String description;
+@Column(name = "productQty")
 private int quantity;
+@Column(name = "productCost")
 private double price;
+@ManyToOne
+@JoinColumn(name = "supplierId")
 private Supplier supplier;
 
 public Product(int id) {
-	super.id = id;
+	this.productID = id;
 }
 
 public Product(int id, String name, String description, double price, int quantity, Supplier supplier) {
@@ -16,10 +31,20 @@ public Product(int id, String name, String description, double price, int quanti
 	this.quantity = quantity;
 	this.price = price;
 	this.supplier = supplier;
-	super.id = id;
+	this.productID = id;
 	this.description = description;
 }
 
+public Product() {
+
+}
+
+public int getProductID() {
+	return productID;
+}
+public void setProductID(int productID) {
+	this.productID = productID;
+}
 
 public String getDescription() {
 	return description;
@@ -34,7 +59,7 @@ public Supplier getSupplier() {
 }
 
 public void setSupplier(Supplier supplier) {
-	this.supplier = supplier;
+this.supplier = supplier;
 }
 
 public String getName() {
@@ -64,11 +89,15 @@ public void setPrice(double price) {
 @Override
 public String toString() {
 	return "Product{" +
-			"id=" + id +
+			"id=" + this.productID +
 			", name='" + name + '\'' +
 			", description='" + description + '\'' +
 			", price=" + price +
 			", quantity=" + quantity +
 			'}';
+}
+
+public int getId() {
+	return productID;
 }
 }

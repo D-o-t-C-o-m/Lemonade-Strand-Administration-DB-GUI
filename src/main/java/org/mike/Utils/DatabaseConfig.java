@@ -1,4 +1,4 @@
-package org.mike;
+package org.mike.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;
