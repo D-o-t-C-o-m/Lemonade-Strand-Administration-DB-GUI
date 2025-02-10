@@ -7,16 +7,18 @@ import org.mike.exceptions.IDNotUniqueException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.mike.DAO.productDao;
 
 public class ProductFileRepository extends GenericRepository<Product> {
 
-private String filename;
-
+private final String filename;
+private final productDao productDao;
 public ProductFileRepository(String filename) throws IOException, IDNotUniqueException {
 	super();
 	this.filename = filename;
 	super.fileExistenceCheck(filename);
-	loadProductsFromFile();
+	this.productDao = new productDao();
+	//loadProductsFromFile();
 }
 
 @Override
@@ -40,35 +42,38 @@ public void delete(int Id) throws FileNotFoundException {
 }
 
 public List<Product> readProductsFromFile() {
-	List<Product> products = new ArrayList<>();
-	BufferedReader br;
-	try {
-		br = new BufferedReader(new FileReader(filename));
-		String line;
-		br.readLine();
-		while ((line = br.readLine()) != null) {
-			String[] parts = line.split(",");
-			int id = Integer.parseInt(parts[0]);
-			String name = parts[1];
-			String description = parts[2];
-			double price = Double.parseDouble(parts[3]);
-			int quantity = Integer.parseInt(parts[4]);
-			int supplierId = Integer.parseInt(parts[5]);
-
-			Supplier supplier = new Supplier();
-			supplier.setId(supplierId);
-
-			Product product = new Product(id, name, description, price, quantity, supplier);
-			products.add(product);
-
-		}
-		br.close();
-	} catch (IOException e) {
-		throw new RuntimeException(e);
-
-	}
-	return products;
+	return productDao.getAllProducts();
 }
+//public List<Product> readProductsFromFile() {
+//	List<Product> products = new ArrayList<>();
+//	BufferedReader br;
+//	try {
+//		br = new BufferedReader(new FileReader(filename));
+//		String line;
+//		br.readLine();
+//		while ((line = br.readLine()) != null) {
+//			String[] parts = line.split(",");
+//			int id = Integer.parseInt(parts[0]);
+//			String name = parts[1];
+//			String description = parts[2];
+//			double price = Double.parseDouble(parts[3]);
+//			int quantity = Integer.parseInt(parts[4]);
+//			int supplierId = Integer.parseInt(parts[5]);
+//
+//			Supplier supplier = new Supplier();
+//			supplier.setId(supplierId);
+//
+//			Product product = new Product(id, name, description, price, quantity, supplier);
+//			products.add(product);
+//
+//		}
+//		br.close();
+//	} catch (IOException e) {
+//		throw new RuntimeException(e);
+//
+//	}
+//	return products;
+//}
 
 private void writeToFile() {
 	BufferedWriter bw;

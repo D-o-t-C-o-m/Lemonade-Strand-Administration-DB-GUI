@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
 @Entity
+@Cacheable
 @Table(name="products")
 public class Product extends org.mike.domain.Entity {
 @Id

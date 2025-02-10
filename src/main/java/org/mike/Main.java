@@ -37,19 +37,20 @@ public static void main(String[] args) throws IOException, IDNotUniqueException 
 
 	//GraphicalUI graphicalUI = new GraphicalUI();
 	System.out.println("Welcome to the Lemonade Stand Administration App.");
-	//userInterface.runMenu();
+	userInterface.runMenu();
 
-	productDao userDao = new productDao();
-	Product item = new Product();
-	item.setProductID(540);
-	item.setName("Artificial Sweetener");
-	item.setDescription("Sweetener for people with BEETUS");
-	item.setPrice(8);
-	item.setQuantity(120);
-	Supplier supplier = supplierRepository.findById(2);
-	item.setSupplier(supplier);
-	userDao.saveProduct(item);
-	System.out.println("Item saved successfully!");
+	//productDao productDao = new productDao();
+	//
+//	Product item = new Product();
+//	item.setProductID(540);
+//	item.setName("Artificial Sweetener");
+//	item.setDescription("Sweetener for people with BEETUS");
+//	item.setPrice(8);
+//	item.setQuantity(120);
+//	Supplier supplier = supplierRepository.findById(2);
+//	item.setSupplier(supplier);
+//	userDao.saveProduct(item);
+//	System.out.println("Item saved successfully!");
 
 }
 

@@ -4,20 +4,25 @@ import org.mike.domain.Product;
 import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
+import org.mike.repository.ProductServer;
 import org.mike.service.ProductService;
 import org.mike.service.SupplierService;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class ProductMenu {
 private SupplierService supplierService;
 private ProductService productService;
+private ProductServer productServer = new ProductServer();
 
-public ProductMenu(SupplierService supplierService, ProductService productService) {
+public ProductMenu(SupplierService supplierService, ProductService productService, ProductServer productServer) throws IOException {
 	this.supplierService = supplierService;
 	this.productService = productService;
+	this.productServer = productServer;
 }
 
 private void showProductsMenu() {
@@ -125,8 +130,8 @@ private void handleRemoveProducts(Scanner scanner) throws FileNotFoundException,
 }
 
 private void handleShowProducts() {
-	Iterable<Product> productList = productService.getAllProducts();
-	for (Product product : productList) {
+	List productList = productServer.findAll();
+	for (Object product : productList) {
 		System.out.println(product);
 	}
 }

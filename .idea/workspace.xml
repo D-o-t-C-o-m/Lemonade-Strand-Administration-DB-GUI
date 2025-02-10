@@ -10,25 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Started using Hibernate to integrate DB. Products and suppliers can now be created.">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/lemonade_administration_app_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/HibernateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/MySQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/MySQLConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Lemonade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Lemonade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/suppliers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/suppliers.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +108,8 @@
       <workItem from="1738974660605" duration="1559000" />
       <workItem from="1738978072270" duration="483000" />
       <workItem from="1739072682991" duration="589000" />
-      <workItem from="1739133286395" duration="6656000" />
+      <workItem from="1739133286395" duration="6901000" />
+      <workItem from="1739155118291" duration="3126000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -158,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738902949869</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Started using Hibernate to integrate DB. Products and suppliers can now be created.">
+      <option name="closed" value="true" />
+      <created>1739140117504</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739140117504</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
