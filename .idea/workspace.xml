@@ -9,8 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Products now pulling from DB to create objects. Next step to finish implementing objects and allow writing back to DB">
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Set up some logging configuration for the SQL queries">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_3_25,_6_54 PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_3_25__6_54PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products.csv" beforeDir="false" afterPath="$PROJECT_DIR$/products.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logging.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,27 +61,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GraphicalUI.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ProductServer.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GraphicalUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductServer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -108,7 +119,8 @@
       <workItem from="1738978072270" duration="483000" />
       <workItem from="1739072682991" duration="589000" />
       <workItem from="1739133286395" duration="6901000" />
-      <workItem from="1739155118291" duration="3979000" />
+      <workItem from="1739155118291" duration="4203000" />
+      <workItem from="1739240739860" duration="5949000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -166,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739159962963</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Set up some logging configuration for the SQL queries">
+      <option name="closed" value="true" />
+      <created>1739160814352</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739160814352</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +200,8 @@
     <MESSAGE value="MVP UI complete, now need to begin integrating the actual DB work." />
     <MESSAGE value="Started using Hibernate to integrate DB. Products and suppliers can now be created." />
     <MESSAGE value="Products now pulling from DB to create objects. Next step to finish implementing objects and allow writing back to DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Products now pulling from DB to create objects. Next step to finish implementing objects and allow writing back to DB" />
+    <MESSAGE value="Set up some logging configuration for the SQL queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set up some logging configuration for the SQL queries" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -189,6 +210,11 @@
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

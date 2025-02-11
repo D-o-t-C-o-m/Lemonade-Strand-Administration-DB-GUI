@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Table(name="products")
 public class Product extends org.mike.domain.Entity {
 @Id
+//@GeneratedValue(strategy=GenerationType.AUTO)
 @Column(name = "productID")
 private int productID;
 @Column(name = "productName")

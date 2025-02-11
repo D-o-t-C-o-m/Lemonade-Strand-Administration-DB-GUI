@@ -1,5 +1,4 @@
 package org.mike;
-
 import org.mike.DAO.productDao;
 import org.mike.domain.Product;
 import org.mike.domain.Supplier;
@@ -14,7 +13,9 @@ import org.mike.validators.ProductValidator;
 
 import java.io.IOException;
 
+
 public class Main {
+
 public static void main(String[] args) throws IOException, IDNotUniqueException {
 
 	SupplierFileRepository supplierRepository = new SupplierFileRepository("suppliers.csv");

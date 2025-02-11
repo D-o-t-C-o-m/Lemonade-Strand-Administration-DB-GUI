@@ -1,16 +1,21 @@
 package org.mike.userinterface;
 
+import org.mike.DAO.productDao;
+import org.mike.domain.Entity;
 import org.mike.domain.Product;
 import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
+import org.mike.repository.GenericRepository;
 import org.mike.repository.ProductServer;
+import org.mike.repository.SupplierFileRepository;
 import org.mike.service.ProductService;
 import org.mike.service.SupplierService;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -18,6 +23,7 @@ public class ProductMenu {
 private SupplierService supplierService;
 private ProductService productService;
 private ProductServer productServer = new ProductServer();
+private productDao productDao = new productDao();
 
 public ProductMenu(SupplierService supplierService, ProductService productService, ProductServer productServer) throws IOException {
 	this.supplierService = supplierService;
@@ -69,27 +75,42 @@ public void runProductsMenu(Scanner scanner) throws FileNotFoundException, Valid
 }
 
 private void handleAddProduct(Scanner scanner) {
-	System.out.println("Product ID: ");
-	int id = scanner.nextInt();
+	Random rand = new Random();
+	Product item = new Product();
+	int id = rand.nextInt(999);
+	System.out.println("ID: " + id);
+	item.setId(id);
+	item.setProductID(id);
 	scanner.nextLine();
 	System.out.println("Name: ");
 	String name = scanner.nextLine().trim();
+	if (name.isEmpty()) {
+		System.out.println("Name cannot be empty");
+		return;
+	}
+	item.setName(name);
 
 	System.out.println("Description: ");
 	String description = scanner.nextLine().trim();
+	item.setDescription(description);
 
 	System.out.println("Price: ");
 	double price = scanner.nextDouble();
+	item.setPrice(price);
 
 	System.out.println("Quantity: ");
 	int quantity = scanner.nextInt();
+	item.setQuantity(quantity);
 
 	System.out.println("Supplier Id: ");
 	int supplierId = scanner.nextInt();
+	Supplier supplier = supplierService.findById(supplierId);
+	item.setSupplier(supplier);
+
 
 	try {
-		productService.saveProduct(id, name, description, price, quantity, supplierId);
-	} catch (ValidationException | IDNotUniqueException | FileNotFoundException e) {
+		productServer.save(item);
+	} catch (ValidationException | IDNotUniqueException e) {
 		System.out.println("Error with saving the product " + e.getMessage());
 	}
 }
@@ -134,6 +155,7 @@ private void handleShowProducts() {
 	for (Object product : productList) {
 		System.out.println(product);
 	}
+	System.out.println(" ");
 }
 
 private void supplierSearch(Scanner scanner) {

@@ -14,7 +14,7 @@ import org.mike.DAO.productDao;
 
 public class ProductServer{
 private static final Logger logger = LoggerFactory.getLogger(ProductServer.class);
-private productDao dao;
+private final productDao dao;
 
 //public static void getAllProducts(){
 //	String sql = "SELECT productId,productName,productDescription,productCost,productQty,supplierID  FROM products";
