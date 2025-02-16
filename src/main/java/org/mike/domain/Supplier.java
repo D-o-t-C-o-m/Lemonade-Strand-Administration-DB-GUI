@@ -1,14 +1,13 @@
 package org.mike.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 import java.util.Objects;
 
 @Entity
 @Table (name="supplier_info")
+@Cacheable
 public class Supplier extends org.mike.domain.Entity {
 
 @Id

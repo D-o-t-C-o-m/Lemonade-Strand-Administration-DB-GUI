@@ -27,7 +27,6 @@ public Order(int id, Lemonade lemonade, int quantity, double finalPrice, Date da
 	this.date = date;
 }
 
-@Override
 public int getId() {
 	return id;
 }

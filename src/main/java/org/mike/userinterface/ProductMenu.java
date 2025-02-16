@@ -3,10 +3,12 @@ package org.mike.userinterface;
 
 import org.mike.domain.Product;
 import org.mike.domain.Supplier;
+import org.mike.service.GenericServer;
+import org.mike.validators.ProductValidator;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.service.ProductServer;
 import org.mike.service.SupplierServer;
+import org.mike.DAO.productDAO;
 
 
 import java.io.FileNotFoundException;
@@ -14,15 +16,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class ProductMenu {
-private final ProductServer productServer;
-private final SupplierServer supplierServer;
+private final productDAO dao = new productDAO();
+private final GenericServer<Product> productServer = new GenericServer<Product>(dao);
+private final SupplierServer supplierServer = new SupplierServer();
+private final ProductValidator productValiator = new ProductValidator();
 
-public ProductMenu(ProductServer productServer, SupplierServer supplierServer){
+public ProductMenu(){
 
-	this.productServer = productServer;
-	this.supplierServer = supplierServer;
 }
 
 private void showProductsMenu() {
@@ -76,7 +77,6 @@ private void handleAddProduct(Scanner scanner) {
 	Product item = new Product();
 	int id = rand.nextInt(999);
 	System.out.println("ID: " + id);
-	item.setId(id);
 	item.setProductID(id);
 	scanner.nextLine();
 	System.out.println("Name: ");
@@ -103,7 +103,7 @@ private void handleAddProduct(Scanner scanner) {
 	int supplierId = scanner.nextInt();
 	Supplier supplier = supplierServer.findById(supplierId);
 	item.setSupplier(supplier);
-
+	productValiator.validateProduct(item);
 
 	try {
 		productServer.save(item);

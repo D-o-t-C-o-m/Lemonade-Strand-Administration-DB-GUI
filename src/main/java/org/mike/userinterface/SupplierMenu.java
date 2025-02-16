@@ -14,10 +14,9 @@ import java.util.Scanner;
 public class SupplierMenu {
 
 
-private final SupplierServer supplierServer;
+private SupplierServer supplierServer = new SupplierServer();
 
-public SupplierMenu(SupplierServer supplierServer) {
-	this.supplierServer = supplierServer;
+public SupplierMenu() {
 }
 
 private void showSuppliersMenu() {

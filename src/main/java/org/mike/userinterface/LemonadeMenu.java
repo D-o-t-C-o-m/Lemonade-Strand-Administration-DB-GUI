@@ -3,10 +3,8 @@ package org.mike.userinterface;
 import org.mike.domain.Lemonade;
 import org.mike.domain.LemonadeRecipe;
 import org.mike.domain.Product;
-import org.mike.repository.LemonadeFileRepository;
-import org.mike.repository.LemonadeRecipeFileRepository;
-import org.mike.service.LemonadeService;
-import org.mike.service.ProductService;
+import org.mike.service.*;
+import org.mike.DAO.productDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +12,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class LemonadeMenu {
-private LemonadeService lemonadeService;
-private LemonadeFileRepository lemonadeRepository;
-private LemonadeRecipeFileRepository lemonadeRecipeRepository;
-private ProductService productService;
+private final productDAO DAO = new productDAO();
+private final LemonadeServer lemonadeServer = new LemonadeServer();
+private final GenericServer<Product> productServer = new GenericServer<Product>(DAO);
 
-public LemonadeMenu(LemonadeService lemonadeService, ProductService productService) {
-	this.lemonadeService = lemonadeService;
-	this.lemonadeRepository = lemonadeRepository;
-	this.lemonadeRecipeRepository = lemonadeRecipeRepository;
-	this.productService = productService;
-}
+
+public LemonadeMenu() {}
+
 public void runLemonadeMenu(Scanner scanner) {
 	int option = -1;
 	while (option != 3) {
@@ -54,9 +48,8 @@ private void showLemonadesMenu() {
 	System.out.println("What do you want to do? ");
 	System.out.print("> ");
 }
-
 private void handleShowLemonades() {
-	Iterable<Lemonade> lemonades = lemonadeService.findAll();
+	Iterable<Lemonade> lemonades = lemonadeServer.findAll();
 	for (Lemonade lemonade : lemonades) {
 		System.out.println(lemonade.getName());
 	}
@@ -65,7 +58,7 @@ private void handleShowLemonadeRecipes(Scanner scanner) {
 	System.out.print("The ID of the lemonade: ");
 	int lemonadeId = scanner.nextInt();
 
-	List<LemonadeRecipe> requestedLemonadeRecipe = lemonadeService.findLemonadeRecipe(lemonadeId);
+	List<LemonadeRecipe> requestedLemonadeRecipe = lemonadeServer.findLemonadeRecipe(lemonadeId);
 	System.out.println("The requested lemonade contains: ");
 
 	for (LemonadeRecipe lemonadeRecipe : requestedLemonadeRecipe) {
@@ -79,8 +72,8 @@ private void handleShowLemonadeRecipes(Scanner scanner) {
 	}
 }
 public void lemonadeOutOfStockReport() {
-	List<LemonadeRecipe> recipe = lemonadeService.findAllLemonadeRecipe();
-	Iterable<Product> onHands = productService.getAllProducts();
+	List<LemonadeRecipe> recipe = lemonadeServer.findAllLemonadeRecipe();
+	Iterable<Product> onHands = productServer.getAll();
 	String currentLemonade = "";
 	boolean OOS = false;
 
@@ -114,4 +107,5 @@ public void lemonadeOutOfStockReport() {
 	}
 }
 }
+
 

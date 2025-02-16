@@ -16,7 +16,7 @@ public void validateProduct(Product product) throws ValidationException {
 	if (product.getPrice() < 1 || product.getPrice() > 1000) {
 		stringBuilder.append("Product price must be between 1 and 1000 \n");
 	}
-	if (product.getQuantity() < 0 || product.getQuantity() > 25) {
+	if (product.getQuantity() < 0 || product.getQuantity() > 250) {
 		stringBuilder.append("Product quantity must be between 1 and 25 \n");
 	}
 	if (!stringBuilder.isEmpty()) {

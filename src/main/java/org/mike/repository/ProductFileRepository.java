@@ -40,7 +40,7 @@ public void delete(int Id) throws FileNotFoundException {
 }
 
 public List<Product> readProductsFromFile() {
-	return productDao.getAllProducts();
+	return productDao.getAll();
 }
 //public List<Product> readProductsFromFile() {
 //	List<Product> products = new ArrayList<>();

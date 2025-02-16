@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 @Table(name="lemonade")
+@Cacheable
 public class Lemonade extends org.mike.domain.Entity {
 
 @Column(name = "LemonadeID")

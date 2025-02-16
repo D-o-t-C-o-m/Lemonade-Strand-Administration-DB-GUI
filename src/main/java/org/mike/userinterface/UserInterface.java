@@ -3,26 +3,24 @@ package org.mike.userinterface;
 
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.service.*;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
 public class UserInterface {
-private SupplierMenu supplierMenu;
-private ProductMenu productMenu;
-private LemonadeMenu lemonadeMenu;
-private OrderMenu orderMenu;
+private final SupplierMenu supplierMenu;
+private final ProductMenu productMenu;
+private final LemonadeMenu lemonadeMenu;
+private final OrderMenu orderMenu;
 
 
-public UserInterface(ProductService productService, SupplierService supplierService, LemonadeService lemonadeService, OrderService orderService) throws IOException {
-	this.supplierMenu = new SupplierMenu(new SupplierServer());
-	this.productMenu = new ProductMenu(new ProductServer(), new SupplierServer());
-	this.lemonadeMenu = new LemonadeMenu(lemonadeService, productService);
-	this.orderMenu = new OrderMenu(orderService);
+public UserInterface()  {
+	this.supplierMenu = new SupplierMenu();
+	this.productMenu = new ProductMenu();
+	this.lemonadeMenu = new LemonadeMenu();
+	this.orderMenu = new OrderMenu();
 }
 
 private void showMenu() {
@@ -64,6 +62,7 @@ public void runMenu() {
 				case 6:
 					lemonadeMenu.lemonadeOutOfStockReport();
 				case 7:
+					System.out.println("Goodbye!");
 					break;
 			}
 		}

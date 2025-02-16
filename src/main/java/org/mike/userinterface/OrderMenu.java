@@ -4,7 +4,7 @@ import org.mike.domain.Order;
 import org.mike.dtos.DailySalesDTO;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.service.OrderService;
+import org.mike.service.OrderServer;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -12,9 +12,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class OrderMenu {
-private OrderService orderService;
-public OrderMenu(OrderService orderService) {
-	this.orderService = orderService;
+private final OrderServer orderServer = new OrderServer();
+public OrderMenu() {
 }
 public void runOrderOption(Scanner scanner) {
 	System.out.println("Placing a new order.");
@@ -31,19 +30,17 @@ public void runOrderOption(Scanner scanner) {
 	int quantity = scanner.nextInt();
 
 	try {
-		Order order = orderService.saveOrder(id, lemonadeId, quantity);
-		System.out.printf("The order with ID=%s has been saved \n", order.getId());
+		//Order order = orderServer.save(id, lemonadeId, quantity);
+		//System.out.printf("The order with ID=%s has been saved \n", order.getId());
 	} catch (ValidationException | IDNotUniqueException e) {
 		System.out.println("Error with saving the order: " + e.getMessage());
-	} catch (FileNotFoundException e) {
-		throw new RuntimeException(e);
 	}
 }
 
 public void runDailyReport(){
 		System.out.println("You want to create a daily report.");
 
-		List<DailySalesDTO> report = orderService.getDailyReport();
+		List<DailySalesDTO> report = orderServer.getDailyReport();
 		for(DailySalesDTO day: report){
 			String reportLine = "For the day %s the total items sold %d, for a total of %.2f\n";
 			String reportLineFormatted = String.format(reportLine, day.getDayString(), day.getTotalSales(), day.getSalesDollars());

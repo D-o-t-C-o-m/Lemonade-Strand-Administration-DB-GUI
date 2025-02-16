@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @Table(name="products")
 public class Product extends org.mike.domain.Entity {
 @Id
-//@GeneratedValue(strategy=GenerationType.AUTO)
+
 @Column(name = "productID")
 private int productID;
 @Column(name = "productName")
@@ -24,10 +24,6 @@ private double price;
 @ManyToOne(cascade=CascadeType.ALL)
 @JoinColumn(name = "supplierId")
 private Supplier supplier;
-
-//public Product(int id) {
-//	this.productID = id;
-//}
 
 public Product(int id, String name, String description, double price, int quantity, Supplier supplier) {
 	this.name = name;

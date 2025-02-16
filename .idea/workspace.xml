@@ -9,11 +9,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Supplier and Product features all integrated in DB">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Mapped all the entities to the DB">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/lemonadeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/OrderServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemonade-recipes.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemonade.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/supplierDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/RepositoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/RepositoryInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/OrderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/OrderMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/validators/ProductValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/validators/ProductValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/suppliers.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +151,7 @@
       <workItem from="1739678432300" duration="1118000" />
       <workItem from="1739679557254" duration="908000" />
       <workItem from="1739718266973" duration="5022000" />
-      <workItem from="1739723298815" duration="6057000" />
+      <workItem from="1739723298815" duration="11740000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -219,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739726734216</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Mapped all the entities to the DB">
+      <option name="closed" value="true" />
+      <created>1739732892189</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1739732892189</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +284,8 @@
     <MESSAGE value="Product now fully uses the server to add and display products. Logging still WIP" />
     <MESSAGE value="Adding logging to product operations, Delete and Find now backed to server. Update next as well as searching by Supplier." />
     <MESSAGE value="Supplier and Product features all integrated in DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Supplier and Product features all integrated in DB" />
+    <MESSAGE value="Mapped all the entities to the DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mapped all the entities to the DB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
