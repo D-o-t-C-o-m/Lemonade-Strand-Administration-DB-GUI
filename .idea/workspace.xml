@@ -9,20 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Adding logging to product operations, Delete and Find now backed to server. Update next as well as searching by Supplier.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/supplierDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Supplier and Product features all integrated in DB">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +129,7 @@
       <workItem from="1739678432300" duration="1118000" />
       <workItem from="1739679557254" duration="908000" />
       <workItem from="1739718266973" duration="5022000" />
-      <workItem from="1739723298815" duration="3281000" />
+      <workItem from="1739723298815" duration="6057000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -220,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739680401513</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Supplier and Product features all integrated in DB">
+      <option name="closed" value="true" />
+      <created>1739726734216</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1739726734216</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +253,8 @@
     <MESSAGE value="Set up some logging configuration for the SQL queries" />
     <MESSAGE value="Product now fully uses the server to add and display products. Logging still WIP" />
     <MESSAGE value="Adding logging to product operations, Delete and Find now backed to server. Update next as well as searching by Supplier." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding logging to product operations, Delete and Find now backed to server. Update next as well as searching by Supplier." />
+    <MESSAGE value="Supplier and Product features all integrated in DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Supplier and Product features all integrated in DB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

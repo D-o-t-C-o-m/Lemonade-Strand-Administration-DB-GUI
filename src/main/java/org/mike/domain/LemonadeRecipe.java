@@ -1,12 +1,25 @@
 package org.mike.domain;
 
+import jakarta.persistence.*;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+@Table(name = "lemonade-recipes")
+@Cacheable
 public class LemonadeRecipe extends Entity {
+@Id
+@Column(name = "RecipeID")
 private int id;
-private Map<Product, Integer> productQuantities; // Map to store products and their quantities
+
+@ElementCollection
+@CollectionTable(name="recipe_products", joinColumns = @JoinColumn(name = "RecipeID"))
+@MapKeyJoinColumn(name = "ProductID")
+@Column(name = "Quantity")
+private Map<Product, Integer> productQuantities;
+@ManyToOne
+@Column(name = "LemonadeID")
 private Lemonade lemonade;
 
 public LemonadeRecipe(int id, Lemonade lemonade) {

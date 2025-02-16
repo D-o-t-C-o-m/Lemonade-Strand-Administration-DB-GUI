@@ -1,21 +1,38 @@
 package org.mike.domain;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+
 import java.util.Date;
-
+@jakarta.persistence.Entity
+@Cacheable
+@Table(name="orders")
 public class Order extends Entity {
-
+@Id
+@Column(name="ID")
+private int id;
+@Column(name="Lemonade")
 private Lemonade lemonade;
+@Column(name="Quantity")
 private int quantity;
+@Column(name="FinalPrice")
 private double finalPrice;
+@Column(name="Date")
 private Date date;
 
 public Order(int id, Lemonade lemonade, int quantity, double finalPrice, Date date) {
-	super(id);
+	this.id = id;
 	this.lemonade = lemonade;
 	this.quantity = quantity;
 	this.finalPrice = finalPrice;
 	this.date = date;
+}
+
+@Override
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
 }
 public int getQuantity() {
 	return quantity;
