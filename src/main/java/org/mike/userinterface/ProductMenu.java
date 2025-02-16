@@ -36,8 +36,8 @@ private void showProductsMenu() {
 
 	System.out.println("===================");
 	System.out.println("1. Add a product");
-	System.out.println("2. Update a product");
-	System.out.println("3. Remove a product");
+	System.out.println("2. Remove a product");
+	System.out.println("3. Update a product");
 	System.out.println("4. Display all products");
 	System.out.println("5. Search for a product by supplier");
 	System.out.println("6. Back to main menu");
@@ -69,7 +69,7 @@ public void runProductsMenu(Scanner scanner) throws FileNotFoundException, Valid
 				break;
 			case 6:
 				break;
-			//Add a method for updating product quantites IE Purchase / Waste
+			//Add a method for updating product quantities IE Purchase / Waste
 		}
 	}
 }
@@ -122,6 +122,7 @@ private void handleUpdateProduct(Scanner scanner) throws FileNotFoundException {
 	System.out.println("New Name: ");
 	String name = scanner.nextLine().trim();
 
+
 	System.out.println("New Description: ");
 	String description = scanner.nextLine().trim();
 
@@ -134,8 +135,13 @@ private void handleUpdateProduct(Scanner scanner) throws FileNotFoundException {
 	System.out.println("SupplierId: ");
 	int supplierId = scanner.nextInt();
 
+	productServer.findById(id).setName(name);
+	productServer.findById(id).setDescription(description);
+	productServer.findById(id).setPrice(price);
+	productServer.findById(id).setQuantity(quantity);
+	productServer.findById(id).setSupplier(supplierService.findById(supplierId));
 	try {
-		productService.updateProduct(id, name, description, price, quantity, supplierId);
+		productServer.save(productServer.findById(id));
 	} catch (ValidationException | IDNotUniqueException e) {
 		System.out.println("Error with saving the product " + e.getMessage());
 	}
@@ -146,7 +152,7 @@ private void handleRemoveProducts(Scanner scanner) throws FileNotFoundException,
 	System.out.println("ID to Remove Products: ");
 	int id = scanner.nextInt();
 
-	productService.removeProduct(id);
+	productServer.delete(id);
 	System.out.printf("The product with ID %d was deleted successfully. %n", id);
 }
 
