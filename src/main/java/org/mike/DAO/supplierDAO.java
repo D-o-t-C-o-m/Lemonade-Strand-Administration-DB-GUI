@@ -3,54 +3,57 @@ package org.mike.DAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.mike.Utils.HibernateUtil;
-import org.mike.domain.Product;
+import org.mike.domain.Supplier;
 
 import java.util.List;
 import java.util.Objects;
 
-public class productDao {
+public class supplierDAO {
 
-public void saveProduct(Product product) {
+public void saveSupplier(Supplier supplier) {
 	Session session = HibernateUtil.getSession();
 	Transaction tx = session.beginTransaction();
-	if (Objects.isNull(session.find(Product.class, product.getId()))) {
-		session.persist(product);
+	if (Objects.isNull(session.find(Supplier.class, supplier.getId()))) {
+		session.persist(supplier);
 	} else {
-		session.merge(product);
+		session.merge(supplier);
 	}
 	tx.commit();
 	session.close();
 }
 
-//public void updateProduct(Product product) {
+//public void updateProduct(Supplier supplier) {
 //	Session session = HibernateUtil.getSession();
 //	Transaction tx = session.beginTransaction();
-//	session.update(product);
+//	session.update(supplier);
 //	tx.commit();
 //	session.close();
 //}
 
-public void deleteProduct(Product product) {
+public void deleteProduct(Supplier supplier) {
 	Session session = HibernateUtil.getSession();
 	Transaction tx = session.beginTransaction();
-	session.remove(product);
+	session.remove(supplier);
 	tx.commit();
 	session.close();
 }
-public Product getProduct(int id) {
+
+public Supplier getSupplier(int id) {
 	Session session = HibernateUtil.getSession();
 	Transaction tx = session.beginTransaction();
-	Product product = session.get(Product.class, id);
+	Supplier supplier = session.get(Supplier.class, id);
 	tx.commit();
 	session.close();
-	return product;
+	return supplier;
 }
-public List getAllProducts() {
+
+public List<Supplier> getAllSuppliers() {
 	Session session = HibernateUtil.getSession();
 	Transaction tx = session.beginTransaction();
-	List products = session.createQuery("from Product", Product.class).getResultList();
+	List<Supplier> products = session.createQuery("from Supplier", Supplier.class).getResultList();
 	tx.commit();
 	session.close();
 	return products;
 }
+
 }

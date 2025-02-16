@@ -1,34 +1,28 @@
 package org.mike.userinterface;
 
-import org.mike.DAO.productDao;
-import org.mike.domain.Entity;
+
 import org.mike.domain.Product;
 import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.repository.GenericRepository;
-import org.mike.repository.ProductServer;
-import org.mike.repository.SupplierFileRepository;
-import org.mike.service.ProductService;
-import org.mike.service.SupplierService;
+import org.mike.service.ProductServer;
+import org.mike.service.SupplierServer;
+
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 
 public class ProductMenu {
-private SupplierService supplierService;
-private ProductService productService;
-private ProductServer productServer = new ProductServer();
-private productDao productDao = new productDao();
+private final ProductServer productServer;
+private final SupplierServer supplierServer;
 
-public ProductMenu(SupplierService supplierService, ProductService productService, ProductServer productServer) throws IOException {
-	this.supplierService = supplierService;
-	this.productService = productService;
+public ProductMenu(ProductServer productServer, SupplierServer supplierServer){
+
 	this.productServer = productServer;
+	this.supplierServer = supplierServer;
 }
 
 private void showProductsMenu() {
@@ -38,16 +32,17 @@ private void showProductsMenu() {
 	System.out.println("1. Add a product");
 	System.out.println("2. Remove a product");
 	System.out.println("3. Update a product");
-	System.out.println("4. Display all products");
-	System.out.println("5. Search for a product by supplier");
-	System.out.println("6. Back to main menu");
+	System.out.println("4. Update product quantity");
+	System.out.println("5. Display all products");
+	System.out.println("6. Search for a product by supplier");
+	System.out.println("7. Back to main menu");
 	System.out.println("What do you want to do? ");
 	System.out.print("> ");
 }
 
 public void runProductsMenu(Scanner scanner) throws FileNotFoundException, ValidationException, IDNotUniqueException {
 	int option = -1;
-	while (option != 6) {
+	while (option != 7) {
 		showProductsMenu();
 		option = scanner.nextInt();
 
@@ -62,14 +57,16 @@ public void runProductsMenu(Scanner scanner) throws FileNotFoundException, Valid
 				handleUpdateProduct(scanner);
 				break;
 			case 4:
-				handleShowProducts();
+				handleQuantityUpdate(scanner);
 				break;
 			case 5:
-				supplierSearch(scanner);
+				handleShowProducts();
 				break;
 			case 6:
+				supplierSearch(scanner);
 				break;
-			//Add a method for updating product quantities IE Purchase / Waste
+			case 7:
+				break;
 		}
 	}
 }
@@ -104,7 +101,7 @@ private void handleAddProduct(Scanner scanner) {
 
 	System.out.println("Supplier Id: ");
 	int supplierId = scanner.nextInt();
-	Supplier supplier = supplierService.findById(supplierId);
+	Supplier supplier = supplierServer.findById(supplierId);
 	item.setSupplier(supplier);
 
 
@@ -115,13 +112,12 @@ private void handleAddProduct(Scanner scanner) {
 	}
 }
 
-private void handleUpdateProduct(Scanner scanner) throws FileNotFoundException {
+private void handleUpdateProduct(Scanner scanner)  {
 	System.out.println("ID of product being updated: ");
 	int id = scanner.nextInt();
 	scanner.nextLine();
 	System.out.println("New Name: ");
 	String name = scanner.nextLine().trim();
-
 
 	System.out.println("New Description: ");
 	String description = scanner.nextLine().trim();
@@ -135,20 +131,36 @@ private void handleUpdateProduct(Scanner scanner) throws FileNotFoundException {
 	System.out.println("SupplierId: ");
 	int supplierId = scanner.nextInt();
 
-	productServer.findById(id).setName(name);
-	productServer.findById(id).setDescription(description);
-	productServer.findById(id).setPrice(price);
-	productServer.findById(id).setQuantity(quantity);
-	productServer.findById(id).setSupplier(supplierService.findById(supplierId));
+	Product updatedProduct = productServer.findById(id);
+	updatedProduct.setName(name);
+	updatedProduct.setDescription(description);
+	updatedProduct.setPrice(price);
+	updatedProduct.setQuantity(quantity);
+	updatedProduct.setSupplier(supplierServer.findById(supplierId));
 	try {
-		productServer.save(productServer.findById(id));
+		productServer.update(updatedProduct);
 	} catch (ValidationException | IDNotUniqueException e) {
 		System.out.println("Error with saving the product " + e.getMessage());
 	}
 
 }
+public void handleQuantityUpdate(Scanner scanner) {
+	System.out.println("ID of product being updated: ");
+	int id = scanner.nextInt();
+	scanner.nextLine();
+	System.out.println("New Quantity: ");
+	int quantity = scanner.nextInt();
 
-private void handleRemoveProducts(Scanner scanner) throws FileNotFoundException, ValidationException, IDNotUniqueException {
+	Product updatedProduct = productServer.findById(id);
+	updatedProduct.setQuantity(quantity);
+	try {
+		productServer.update(updatedProduct);
+	} catch (ValidationException | IDNotUniqueException e) {
+		System.out.println("Error with saving the product " + e.getMessage());
+	}
+}
+
+private void handleRemoveProducts(Scanner scanner) throws IDNotUniqueException {
 	System.out.println("ID to Remove Products: ");
 	int id = scanner.nextInt();
 
@@ -157,7 +169,7 @@ private void handleRemoveProducts(Scanner scanner) throws FileNotFoundException,
 }
 
 private void handleShowProducts() {
-	List productList = productServer.findAll();
+	List<Product> productList = productServer.findAll();
 	for (Object product : productList) {
 		System.out.println(product);
 	}
@@ -172,7 +184,7 @@ private void supplierSearch(Scanner scanner) {
 	System.out.println("Searching for " + "'"+search+"'");
 	boolean found = false;
 
-	Iterable<Supplier> suppliers = supplierService.findAll();
+	Iterable<Supplier> suppliers = supplierServer.findAll();
 
 	for (Supplier supplier : suppliers) {
 		if (supplier.getName().toLowerCase().contains(search.toLowerCase())) {
@@ -181,9 +193,10 @@ private void supplierSearch(Scanner scanner) {
 
 			found = true;
 
-			System.out.println("\n"+supplierName+":\n");
-			Iterable<Product> products = productService.getAllProducts();
+			System.out.println("\n"+supplierName+"(Vendor "+supplierId+") :\n");
+			Iterable<Product> products = productServer.findAll();
 			for (Product product : products) {
+
 				if (product.getSupplier().getId() == supplierId) {
 					System.out.println("ID, Name, Description");
 					System.out.println(product.getId()+", "+product.getName() + ", " + product.getDescription());

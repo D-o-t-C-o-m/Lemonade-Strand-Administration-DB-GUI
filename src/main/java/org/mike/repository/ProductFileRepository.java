@@ -1,23 +1,21 @@
 package org.mike.repository;
 
 import org.mike.domain.Product;
-import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
-import org.mike.DAO.productDao;
+import org.mike.DAO.productDAO;
 
 public class ProductFileRepository extends GenericRepository<Product> {
 
 private final String filename;
-private final productDao productDao;
+private final productDAO productDao;
 public ProductFileRepository(String filename) throws IOException, IDNotUniqueException {
 	super();
 	this.filename = filename;
 	super.fileExistenceCheck(filename);
-	this.productDao = new productDao();
+	this.productDao = new productDAO();
 	//loadProductsFromFile();
 }
 

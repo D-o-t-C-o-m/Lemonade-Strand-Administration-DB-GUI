@@ -20,13 +20,14 @@ private String description;
 private int quantity;
 @Column(name = "productCost")
 private double price;
-@ManyToOne
+
+@ManyToOne(cascade=CascadeType.ALL)
 @JoinColumn(name = "supplierId")
 private Supplier supplier;
 
-public Product(int id) {
-	this.productID = id;
-}
+//public Product(int id) {
+//	this.productID = id;
+//}
 
 public Product(int id, String name, String description, double price, int quantity, Supplier supplier) {
 	this.name = name;
@@ -41,9 +42,6 @@ public Product() {
 
 }
 
-public int getProductID() {
-	return productID;
-}
 public void setProductID(int productID) {
 	this.productID = productID;
 }

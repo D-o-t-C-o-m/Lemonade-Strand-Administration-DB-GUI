@@ -19,14 +19,17 @@ private String name;
 @Column(name = "supplierEmail")
 private String email;
 
-public Supplier() {
-}
 
 public Supplier(Integer id, String name, String email) {
 	this.supplierID = id;
 	this.name = name;
 	this.email = email;
 }
+
+public Supplier() {
+
+}
+
 public int getId() {
 	return supplierID;
 }

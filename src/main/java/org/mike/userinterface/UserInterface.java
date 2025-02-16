@@ -3,11 +3,7 @@ package org.mike.userinterface;
 
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.repository.ProductServer;
-import org.mike.service.LemonadeService;
-import org.mike.service.OrderService;
-import org.mike.service.ProductService;
-import org.mike.service.SupplierService;
+import org.mike.service.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,8 +19,8 @@ private OrderMenu orderMenu;
 
 
 public UserInterface(ProductService productService, SupplierService supplierService, LemonadeService lemonadeService, OrderService orderService) throws IOException {
-	this.supplierMenu = new SupplierMenu(supplierService);
-	this.productMenu = new ProductMenu(supplierService, productService, new ProductServer());
+	this.supplierMenu = new SupplierMenu(new SupplierServer());
+	this.productMenu = new ProductMenu(new ProductServer(), new SupplierServer());
 	this.lemonadeMenu = new LemonadeMenu(lemonadeService, productService);
 	this.orderMenu = new OrderMenu(orderService);
 }

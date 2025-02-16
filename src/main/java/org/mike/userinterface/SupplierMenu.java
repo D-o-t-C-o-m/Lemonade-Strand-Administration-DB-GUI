@@ -3,6 +3,7 @@ package org.mike.userinterface;
 import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
+import org.mike.service.SupplierServer;
 import org.mike.service.SupplierService;
 
 import java.io.FileNotFoundException;
@@ -12,10 +13,11 @@ import java.util.Scanner;
 
 public class SupplierMenu {
 
-private SupplierService supplierService;
 
-public SupplierMenu(SupplierService supplierService) {
-	this.supplierService = supplierService;
+private final SupplierServer supplierServer;
+
+public SupplierMenu(SupplierServer supplierServer) {
+	this.supplierServer = supplierServer;
 }
 
 private void showSuppliersMenu() {
@@ -77,12 +79,11 @@ private void handleAddSupplier(Scanner scanner) {
 	String email = scanner.next().trim();
 
 	try {
-		Supplier savedSupplier = supplierService.saveSupplier(id, name, email);
+		Supplier savedSupplier = new Supplier(id, name, email);
+		supplierServer.save(savedSupplier);
 		System.out.printf("The supplier with ID %d was created successfully. %n", savedSupplier.getId());
 	} catch (ValidationException | IDNotUniqueException e) {
 		System.out.println("Error with saving the supplier " + e.getMessage());
-	} catch (FileNotFoundException e) {
-		throw new RuntimeException(e);
 	}
 
 }
@@ -98,16 +99,19 @@ private void handleUpdateSupplier(Scanner scanner) throws FileNotFoundException 
 	System.out.println("Email: ");
 	String email = scanner.nextLine().trim();
 
-	Supplier updatedSupplier = supplierService.updateSupplier(id, name, email);
+	Supplier updatedSupplier = supplierServer.findById(id);
+	updatedSupplier.setName(name);
+	updatedSupplier.setEmail(email);
+	supplierServer.update(updatedSupplier);
 	System.out.printf("The supplier with ID %d was updated successfully. %n", updatedSupplier.getId());
 }
 
 
-private void handleRemoveSupplier(Scanner scanner) throws FileNotFoundException {
+private void handleRemoveSupplier(Scanner scanner){
 	System.out.println("ID to Remove: ");
 	int id = scanner.nextInt();
 
-	supplierService.deleteSupplier(id);
+	supplierServer.delete(id);
 	System.out.printf("The supplier with ID %d was deleted successfully. %n", id);
 }
 
@@ -119,7 +123,7 @@ private void displaySuppliers(Iterable<Supplier> suppliers) {
 }
 
 private void handleShowSuppliers() {
-	Iterable<Supplier> suppliers = supplierService.findAll();
+	Iterable<Supplier> suppliers = supplierServer.findAll();
 	displaySuppliers(suppliers);
 }
 

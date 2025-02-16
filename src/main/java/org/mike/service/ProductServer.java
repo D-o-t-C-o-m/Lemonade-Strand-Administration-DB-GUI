@@ -1,22 +1,19 @@
-package org.mike.repository;
+package org.mike.service;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
-
 import org.mike.domain.Product;
 import org.mike.exceptions.IDNotUniqueException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.mike.DAO.productDao;
+import org.mike.DAO.productDAO;
 
 
 public class ProductServer{
 private static final Logger logger = LoggerFactory.getLogger(ProductServer.class);
-private final productDao dao;
+private final productDAO dao;
 
 public ProductServer() throws IDNotUniqueException {
-	this.dao = new productDao();
+	this.dao = new productDAO();
 }
 
 public Product save (Product product) {
@@ -25,15 +22,13 @@ public Product save (Product product) {
 	return product;
 }
 
-
-public Product update(Product product) throws FileNotFoundException {
+public Product update(Product product) {
 	logger.info("updating product{}", product);
-	dao.saveProduct(product);
+	dao.updateProduct(product);
 	return product;
 }
 
-
-public void delete(int entityId) throws FileNotFoundException {
+public void delete(int entityId) {
 	logger.info("deleting product{}", dao.getProduct(entityId));
 	dao.deleteProduct(dao.getProduct(entityId));
 }
