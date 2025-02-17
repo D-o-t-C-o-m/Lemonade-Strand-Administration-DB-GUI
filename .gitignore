@@ -39,3 +39,5 @@ build/
 /src/main/resources/config.properties
 /src/main/resources/config.properties
 /src/main/resources/hibernate.cfg.xml
+/logs/hibernate.log
+/logs/hibernate.log.lck
