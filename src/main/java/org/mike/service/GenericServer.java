@@ -3,10 +3,11 @@ package org.mike.service;
 import java.util.List;
 import org.mike.DAO.DAO;
 import org.mike.domain.Entity;
+import org.mike.userinterface.Identifiable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GenericServer<T extends Entity> {
+public class GenericServer<T extends Entity & Identifiable> {
 private static final Logger logger = LoggerFactory.getLogger(GenericServer.class);
 private final DAO<T> dao;
 

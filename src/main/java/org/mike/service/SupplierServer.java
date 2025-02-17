@@ -23,4 +23,5 @@ public Supplier save(Supplier supplier) throws ValidationException, IDNotUniqueE
 	super.save(supplier);
 	return supplier;
 }
+
 }

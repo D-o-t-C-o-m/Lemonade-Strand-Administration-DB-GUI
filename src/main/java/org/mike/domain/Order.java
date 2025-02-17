@@ -1,21 +1,27 @@
 package org.mike.domain;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
+
 @jakarta.persistence.Entity
-@Cacheable
 @Table(name="orders")
+@Cacheable
 public class Order extends Entity {
 @Id
 @Column(name="ID")
 private int id;
-@Column(name="Lemonade")
+
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name="Lemonade")
 private Lemonade lemonade;
+
 @Column(name="Quantity")
 private int quantity;
+
 @Column(name="FinalPrice")
 private double finalPrice;
+
+@Temporal(TemporalType.DATE)
 @Column(name="Date")
 private Date date;
 
@@ -27,6 +33,11 @@ public Order(int id, Lemonade lemonade, int quantity, double finalPrice, Date da
 	this.date = date;
 }
 
+public Order() {
+
+}
+
+@Override
 public int getId() {
 	return id;
 }

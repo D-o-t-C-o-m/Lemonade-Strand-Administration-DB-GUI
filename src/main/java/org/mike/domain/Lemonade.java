@@ -1,45 +1,52 @@
 package org.mike.domain;
+
 import jakarta.persistence.*;
-import jakarta.persistence.Entity;
 
-@Entity
-@Table(name="lemonade")
+@jakarta.persistence.Entity
+@Table(name = "lemonade")
 @Cacheable
-public class Lemonade extends org.mike.domain.Entity {
-
-@Column(name = "LemonadeID")
+public class Lemonade extends Entity {
+@Id
+@Column(name = "lemonadeID")
 private int id;
+
 @Column(name = "Name")
 private String name;
+
 @Column(name = "Price")
-private double totalPrice;
-public Lemonade() {}
-public Lemonade (int id) {
+private double price;
+
+public Lemonade(int id, String name, double price) {
 	this.id = id;
-}
-public Lemonade(int id,String name, double totalPrice) {
 	this.name = name;
-	this.id = id;
-	this.totalPrice = totalPrice;
+	this.price = price;
 }
-public String getName() {
-	return name;
+
+public Lemonade() {
 }
-public double getTotalPrice() {
-	return totalPrice;
-}
-public void setTotalPrice(double totalPrice) {
-	this.totalPrice = totalPrice;
-}
-public void setName(String name) {
-	this.name = name;
-}
+
+@Override
 public int getId() {
 	return id;
 }
+
 public void setId(int id) {
 	this.id = id;
 }
 
+public String getName() {
+	return name;
+}
 
+public void setName(String name) {
+	this.name = name;
+}
+
+public double getPrice() {
+	return price;
+}
+
+public void setPrice(double price) {
+	this.price = price;
+}
 }

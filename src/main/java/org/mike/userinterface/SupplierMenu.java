@@ -4,7 +4,7 @@ import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
 import org.mike.service.SupplierServer;
-import org.mike.service.SupplierService;
+
 
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class SupplierMenu {
 
 
-private SupplierServer supplierServer = new SupplierServer();
+private final SupplierServer supplierServer = new SupplierServer();
 
 public SupplierMenu() {
 }

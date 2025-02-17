@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
+@jakarta.persistence.Entity
 @Table(name = "lemonade-recipes")
 @Cacheable
 public class LemonadeRecipe extends Entity {
@@ -19,13 +19,17 @@ private int id;
 @Column(name = "Quantity")
 private Map<Product, Integer> productQuantities;
 @ManyToOne
-@Column(name = "LemonadeID")
+@JoinColumn(name = "LemonadeID")
 private Lemonade lemonade;
 
 public LemonadeRecipe(int id, Lemonade lemonade) {
 	this.id = id;
 	this.lemonade = lemonade;
 	this.productQuantities = new HashMap<>();
+}
+
+public LemonadeRecipe() {
+
 }
 
 public Map<Product, Integer> getProductQuantities() {

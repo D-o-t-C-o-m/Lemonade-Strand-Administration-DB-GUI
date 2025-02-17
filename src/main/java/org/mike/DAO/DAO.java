@@ -60,4 +60,14 @@ public List<T> getAll() {
 	session.close();
 	return entities;
 }
+public void preloadCache() {
+	try (Session session = HibernateUtil.getSession()) {
+		Transaction tx = session.beginTransaction();
+		session.createQuery(
+						"FROM " + entityClass.getName(), entityClass)
+				.setCacheable(true)
+				.getResultList();
+		tx.commit();
+	}
+}
 }

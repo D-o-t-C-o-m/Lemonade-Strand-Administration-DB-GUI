@@ -4,7 +4,6 @@ package org.mike.userinterface;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
 
-import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -69,7 +68,7 @@ public void runMenu() {
 		scanner.close();
 	} catch (InputMismatchException e) {
 		System.out.println("Please enter a valid number");
-	} catch (ValidationException | FileNotFoundException | IDNotUniqueException e) {
+	} catch (ValidationException | IDNotUniqueException e) {
 		throw new RuntimeException(e);
 	}
 }

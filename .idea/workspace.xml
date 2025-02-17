@@ -9,33 +9,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Mapped all the entities to the DB">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/lemonadeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/OrderServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/Server.java" afterDir="false" />
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Generic DAO and Server now working for all classes except lemonade recipes. Added precaching code to main">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/Identifiable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lemonade-recipes.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lemonade.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/products.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/productDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/supplierDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Lemonade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Lemonade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/ProductFileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/RepositoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/RepositoryInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/LemonadeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/LemonadeFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/LemonadeRecipeFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/LemonadeRecipeFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/OrderFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/repository/OrderFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/GenericServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/GenericServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/OrderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/OrderMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/validators/ProductValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/validators/ProductValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/suppliers.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +49,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -67,6 +68,9 @@
     &quot;accountId&quot;: &quot;4cf5a0cc-8500-4a6c-a1d4-995169a6ccf3&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/hibernate/orm/hibernate-core/6.4.8.Final/hibernate-core-6.4.8.Final.jar!/org/hibernate/MappingException.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -97,7 +101,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "advanced.settings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -152,6 +156,7 @@
       <workItem from="1739679557254" duration="908000" />
       <workItem from="1739718266973" duration="5022000" />
       <workItem from="1739723298815" duration="11740000" />
+      <workItem from="1739745079208" duration="8068000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -285,7 +290,8 @@
     <MESSAGE value="Adding logging to product operations, Delete and Find now backed to server. Update next as well as searching by Supplier." />
     <MESSAGE value="Supplier and Product features all integrated in DB" />
     <MESSAGE value="Mapped all the entities to the DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mapped all the entities to the DB" />
+    <MESSAGE value="Generic DAO and Server now working for all classes except lemonade recipes. Added precaching code to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generic DAO and Server now working for all classes except lemonade recipes. Added precaching code to main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -296,6 +302,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Lemonade_Strand_Administration_DB_GUI$Main.ic" NAME="Main Coverage Results" MODIFIED="1739160304910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

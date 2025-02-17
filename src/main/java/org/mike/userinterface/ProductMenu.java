@@ -10,17 +10,15 @@ import org.mike.exceptions.ValidationException;
 import org.mike.service.SupplierServer;
 import org.mike.DAO.productDAO;
 
-
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class ProductMenu {
 private final productDAO dao = new productDAO();
-private final GenericServer<Product> productServer = new GenericServer<Product>(dao);
+private final GenericServer<Product> productServer = new GenericServer<>(dao);
 private final SupplierServer supplierServer = new SupplierServer();
-private final ProductValidator productValiator = new ProductValidator();
+private final ProductValidator productValidator = new ProductValidator();
 
 public ProductMenu(){
 
@@ -41,7 +39,7 @@ private void showProductsMenu() {
 	System.out.print("> ");
 }
 
-public void runProductsMenu(Scanner scanner) throws FileNotFoundException, ValidationException, IDNotUniqueException {
+public void runProductsMenu(Scanner scanner) throws ValidationException, IDNotUniqueException {
 	int option = -1;
 	while (option != 7) {
 		showProductsMenu();
@@ -103,7 +101,7 @@ private void handleAddProduct(Scanner scanner) {
 	int supplierId = scanner.nextInt();
 	Supplier supplier = supplierServer.findById(supplierId);
 	item.setSupplier(supplier);
-	productValiator.validateProduct(item);
+	productValidator.validateProduct(item);
 
 	try {
 		productServer.save(item);
