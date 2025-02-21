@@ -9,13 +9,14 @@ import org.mike.validators.ProductValidator;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
 import org.mike.DAO.productDAO;
+import org.mike.Utils.IdGenerator;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class ProductMenu {
 private final productDAO dao = new productDAO();
+private final IdGenerator<Product> idGenerator = new IdGenerator<>(dao);
 private final GenericServer<Supplier> supplierServer = new GenericServer<>(new DAO<>(Supplier.class));
 private final GenericServer<Product> productServer = new GenericServer<>(dao);
 private final ProductValidator productValidator = new ProductValidator();
@@ -71,9 +72,8 @@ public void runProductsMenu(Scanner scanner) throws ValidationException, IDNotUn
 }
 
 private void handleAddProduct(Scanner scanner) {
-	Random rand = new Random();
 	Product item = new Product();
-	int id = rand.nextInt(999);
+	int id = idGenerator.generateId();
 	System.out.println("ID: " + id);
 	item.setProductID(id);
 	scanner.nextLine();

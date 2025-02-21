@@ -6,11 +6,11 @@ import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
 import org.mike.service.GenericServer;
 import org.mike.validators.SupplierValidator;
+import org.mike.Utils.IdGenerator;
 
 
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
-import java.util.Random;
 import java.util.Scanner;
 
 public class SupplierMenu {
@@ -18,6 +18,7 @@ public class SupplierMenu {
 private final DAO<Supplier> DAO = new DAO<>(Supplier.class);
 private final GenericServer<Supplier> supplierServer = new GenericServer<>(DAO);
 private final SupplierValidator supplierValidator = new SupplierValidator();
+private final IdGenerator<Supplier> idGenerator = new IdGenerator<>(DAO);
 
 public SupplierMenu() {
 }
@@ -66,8 +67,7 @@ public void runSuppliersMenu(Scanner scanner) {
 }
 
 private void handleAddSupplier(Scanner scanner) {
-	Random random = new Random();
-	int id = random.nextInt(999);
+	int id = idGenerator.generateId();
 	System.out.println("ID: " + id);
 	scanner.nextLine();
 	System.out.println("Name: ");

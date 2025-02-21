@@ -9,29 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="updated gitignore to ignore my log files">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/DAOManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/IdGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/ServerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/OldLemonadeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/dtos/DailySalesDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/dtos/OutOfStockDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/OrderFileRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/repository/SupplierFileRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/OrderServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/OrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/ProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/SupplierService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/OrderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/OrderMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Utils/DAOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/DAOManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Utils/IdGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/IdGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/SupplierMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +138,7 @@
       <workItem from="1739745079208" duration="11247000" />
       <workItem from="1740097131269" duration="93000" />
       <workItem from="1740097231777" duration="17000" />
-      <workItem from="1740097257161" duration="7666000" />
+      <workItem from="1740097257161" duration="9896000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -285,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739757255375</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports">
+      <option name="closed" value="true" />
+      <created>1740105044515</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1740105044515</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +315,8 @@
     <MESSAGE value="Generic DAO and Server now working for all classes except lemonade recipes. Added precaching code to main" />
     <MESSAGE value="updating logging to write to a file and implemented pooling" />
     <MESSAGE value="updated gitignore to ignore my log files" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore to ignore my log files" />
+    <MESSAGE value="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
