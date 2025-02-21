@@ -2,7 +2,6 @@ package org.mike;
 import org.mike.DAO.productDAO;
 import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
-import org.mike.service.SupplierServer;
 import org.mike.userinterface.UserInterface;
 import org.mike.DAO.lemonadeDAO;
 import org.mike.DAO.DAO;
@@ -35,11 +34,16 @@ public static void main(String[] args) throws IDNotUniqueException {
 	userInterface.runMenu();
 }
 public static void precache(){
-	lemonadeDAO lemonadeDAO = new lemonadeDAO();
-	lemonadeDAO.preloadCache();
-	productDAO productDAO = new productDAO();
-	productDAO.preloadCache();
 	DAO<Supplier> supplierDAO = new DAO<>(Supplier.class);
+	productDAO productDAO = new productDAO();
+	lemonadeDAO lemonadeDAO = new lemonadeDAO();
+
+	System.out.print("25%");
 	supplierDAO.preloadCache();
+	System.out.print("..50%");
+	lemonadeDAO.preloadCache();
+	System.out.print("..75%");
+	productDAO.preloadCache();
+	System.out.print("..100%\n");
 }
 }

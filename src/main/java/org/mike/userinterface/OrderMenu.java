@@ -1,24 +1,31 @@
 package org.mike.userinterface;
 
+import org.mike.Utils.IdGenerator;
+import org.mike.Utils.ServerManager;
+import org.mike.domain.Lemonade;
 import org.mike.domain.Order;
-import org.mike.dtos.DailySalesDTO;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.service.OrderServer;
+import org.mike.Utils.DAOManager;
 
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class OrderMenu {
-private final OrderServer orderServer = new OrderServer();
+private final IdGenerator<Order> idGenerator;
+private final Date date = new Date();
+private final ServerManager serverManager = new ServerManager(new DAOManager());
+
 public OrderMenu() {
+	DAOManager daoManager = new DAOManager();
+	this.idGenerator = new IdGenerator<>(daoManager.getOrderDAO());
 }
+
 public void runOrderOption(Scanner scanner) {
 	System.out.println("Placing a new order.");
 
-	Random random = new Random();
-	int id = random.nextInt(999);
+	int id = idGenerator.generateId();
 	System.out.println("You are Order: " + id);
 	scanner.nextLine();
 
@@ -28,23 +35,32 @@ public void runOrderOption(Scanner scanner) {
 	System.out.print("Quantity: ");
 	int quantity = scanner.nextInt();
 
+	Lemonade lemonade = serverManager.getLemonadeService().findById(lemonadeId);
+	Order order = new Order(id, lemonade, quantity, lemonade.getPrice() * quantity, date);
 	try {
-		//Order order = orderServer.save(id, lemonadeId, quantity);
-		//System.out.printf("The order with ID=%s has been saved \n", order.getId());
+		order = serverManager.getOrderService().save(order);
+		System.out.printf("\nThe order with ID = %s has been saved \n", order.getId());
+		System.out.println("The price is: " + order.getFinalPrice());
 	} catch (ValidationException | IDNotUniqueException e) {
 		System.out.println("Error with saving the order: " + e.getMessage());
 	}
 }
 
-public void runDailyReport(){
-		System.out.println("You want to create a daily report.");
+public void runDailyReport() {
+	System.out.println("Creating a Sales Report.");
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	List<Order> allOrders = serverManager.getOrderService().findAll();
 
-		List<DailySalesDTO> report = orderServer.getDailyReport();
-		for(DailySalesDTO day: report){
-			String reportLine = "For the day %s the total items sold %d, for a total of %.2f\n";
-			String reportLineFormatted = String.format(reportLine, day.getDayString(), day.getTotalSales(), day.getSalesDollars());
-			System.out.println(reportLineFormatted);
-		}
-	}
+	Map<String, List<Order>> ordersByDate = allOrders.stream()
+			.collect(Collectors.groupingBy(order -> dateFormat.format(order.getDate())));
+
+	ordersByDate.forEach((date, orders) -> {
+		int totalUnits = orders.stream().mapToInt(Order::getQuantity).sum();
+		double totalSales = orders.stream().mapToDouble(Order::getFinalPrice).sum();
+
+		String reportLine = "For the day %s the total items sold %d, for a total of %.2f\n";
+		String reportLineFormatted = String.format(reportLine, date, totalUnits, totalSales);
+		System.out.println(reportLineFormatted);
+	});
 }
-
+}

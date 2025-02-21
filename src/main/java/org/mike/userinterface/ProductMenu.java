@@ -1,13 +1,13 @@
 package org.mike.userinterface;
 
 
+import org.mike.DAO.DAO;
 import org.mike.domain.Product;
 import org.mike.domain.Supplier;
 import org.mike.service.GenericServer;
 import org.mike.validators.ProductValidator;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.service.SupplierServer;
 import org.mike.DAO.productDAO;
 
 import java.util.List;
@@ -16,8 +16,8 @@ import java.util.Scanner;
 
 public class ProductMenu {
 private final productDAO dao = new productDAO();
+private final GenericServer<Supplier> supplierServer = new GenericServer<>(new DAO<>(Supplier.class));
 private final GenericServer<Product> productServer = new GenericServer<>(dao);
-private final SupplierServer supplierServer = new SupplierServer();
 private final ProductValidator productValidator = new ProductValidator();
 
 public ProductMenu(){

@@ -1,9 +1,11 @@
 package org.mike.userinterface;
 
+import org.mike.DAO.DAO;
 import org.mike.domain.Supplier;
 import org.mike.exceptions.IDNotUniqueException;
 import org.mike.exceptions.ValidationException;
-import org.mike.service.SupplierServer;
+import org.mike.service.GenericServer;
+import org.mike.validators.SupplierValidator;
 
 
 import java.io.FileNotFoundException;
@@ -13,8 +15,9 @@ import java.util.Scanner;
 
 public class SupplierMenu {
 
-
-private final SupplierServer supplierServer = new SupplierServer();
+private final DAO<Supplier> DAO = new DAO<>(Supplier.class);
+private final GenericServer<Supplier> supplierServer = new GenericServer<>(DAO);
+private final SupplierValidator supplierValidator = new SupplierValidator();
 
 public SupplierMenu() {
 }
@@ -79,6 +82,7 @@ private void handleAddSupplier(Scanner scanner) {
 
 	try {
 		Supplier savedSupplier = new Supplier(id, name, email);
+		supplierValidator.validateSupplier(savedSupplier);
 		supplierServer.save(savedSupplier);
 		System.out.printf("The supplier with ID %d was created successfully. %n", savedSupplier.getId());
 	} catch (ValidationException | IDNotUniqueException e) {
@@ -105,7 +109,6 @@ private void handleUpdateSupplier(Scanner scanner) throws FileNotFoundException 
 	System.out.printf("The supplier with ID %d was updated successfully. %n", updatedSupplier.getId());
 }
 
-
 private void handleRemoveSupplier(Scanner scanner){
 	System.out.println("ID to Remove: ");
 	int id = scanner.nextInt();
@@ -113,7 +116,6 @@ private void handleRemoveSupplier(Scanner scanner){
 	supplierServer.delete(id);
 	System.out.printf("The supplier with ID %d was deleted successfully. %n", id);
 }
-
 
 private void displaySuppliers(Iterable<Supplier> suppliers) {
 	for (Supplier supplier : suppliers) {

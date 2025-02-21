@@ -4,7 +4,7 @@ import org.mike.domain.Lemonade;
 import org.mike.domain.LemonadeRecipe;
 import org.mike.domain.Product;
 import org.mike.service.*;
-import org.mike.DAO.productDAO;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class LemonadeMenu {
-private final productDAO DAO = new productDAO();
-private final LemonadeServer lemonadeServer = new LemonadeServer();
-private final GenericServer<Product> productServer = new GenericServer<Product>(DAO);
+
+private final LemonadeService lemonadeService = new LemonadeService();
+
 
 
 public LemonadeMenu() {}
@@ -49,7 +49,7 @@ private void showLemonadesMenu() {
 	System.out.print("> ");
 }
 private void handleShowLemonades() {
-	Iterable<Lemonade> lemonades = lemonadeServer.findAll();
+	Iterable<Lemonade> lemonades = lemonadeService.findAll();
 	for (Lemonade lemonade : lemonades) {
 		System.out.println(lemonade.getName());
 	}
@@ -58,7 +58,7 @@ private void handleShowLemonadeRecipes(Scanner scanner) {
 	System.out.print("The ID of the lemonade: ");
 	int lemonadeId = scanner.nextInt();
 
-	List<LemonadeRecipe> requestedLemonadeRecipe = lemonadeServer.findLemonadeRecipe(lemonadeId);
+	List<LemonadeRecipe> requestedLemonadeRecipe = lemonadeService.findLemonadeRecipe(lemonadeId);
 	System.out.println("The requested lemonade contains: ");
 
 	for (LemonadeRecipe lemonadeRecipe : requestedLemonadeRecipe) {
@@ -72,18 +72,16 @@ private void handleShowLemonadeRecipes(Scanner scanner) {
 	}
 }
 public void lemonadeOutOfStockReport() {
-	List<LemonadeRecipe> recipe = lemonadeServer.findAllLemonadeRecipe();
-	Iterable<Product> onHands = productServer.getAll();
-	String currentLemonade = "";
+	List<LemonadeRecipe> recipe = lemonadeService.findAllLemonadeRecipe();
 	boolean OOS = false;
 
 	for (LemonadeRecipe lemonadeRecipe : recipe) {
 		int qtyNeed = 0;
 		int qtyOnHand = 0;
 		Lemonade current = lemonadeRecipe.getLemonade();
-		currentLemonade = current.getName();
+		String currentLemonade = current.getName();
 
-		ArrayList<Product> recipeUsage = new ArrayList<Product>();
+		ArrayList<Product> recipeUsage = new ArrayList<>();
 
 		for (Map.Entry<Product, Integer> entry : lemonadeRecipe.getProductQuantities().entrySet()) {
 
