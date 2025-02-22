@@ -52,6 +52,7 @@ public void runMenu() {
 					break;
 				case 3:
 					lemonadeMenu.runLemonadeMenu(scanner);
+					break;
 				case 4:
 					orderMenu.runOrderOption(scanner);
 					break;
@@ -59,7 +60,9 @@ public void runMenu() {
 					orderMenu.runDailyReport();
 					break;
 				case 6:
+					//Fix this
 					lemonadeMenu.lemonadeOutOfStockReport();
+					break;
 				case 7:
 					System.out.println("Goodbye!");
 					break;

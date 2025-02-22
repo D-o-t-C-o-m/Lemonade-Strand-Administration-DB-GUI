@@ -9,7 +9,6 @@ import jakarta.persistence.*;
 @Table(name="products")
 public class Product extends org.mike.domain.Entity {
 @Id
-
 @Column(name = "productID")
 private int productID;
 @Column(name = "productName")
@@ -21,7 +20,7 @@ private int quantity;
 @Column(name = "productCost")
 private double price;
 
-@ManyToOne(cascade=CascadeType.ALL)
+@ManyToOne
 @JoinColumn(name = "supplierId")
 private Supplier supplier;
 

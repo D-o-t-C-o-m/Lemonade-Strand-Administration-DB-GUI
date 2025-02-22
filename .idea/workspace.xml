@@ -9,12 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports">
+    <list default="true" id="a41624f6-7755-44c2-9e2d-04576f6c3435" name="Changes" comment="Implemented the generateID Utility everywhere an ID is needed">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b1dea6d3-2416-4463-92e7-163fc177a212.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Utils/DAOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/DAOManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/Utils/IdGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/Utils/IdGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/DAO/lemonadeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/DAO/lemonadeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/LemonadeRecipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/service/LemonadeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/LemonadeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mike/userinterface/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +142,8 @@
       <workItem from="1739745079208" duration="11247000" />
       <workItem from="1740097131269" duration="93000" />
       <workItem from="1740097231777" duration="17000" />
-      <workItem from="1740097257161" duration="9896000" />
+      <workItem from="1740097257161" duration="10229000" />
+      <workItem from="1740259353723" duration="6105000" />
     </task>
     <task id="LOCAL-00001" summary="made product query better">
       <option name="closed" value="true" />
@@ -276,7 +281,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740105044515</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Implemented the generateID Utility everywhere an ID is needed">
+      <option name="closed" value="true" />
+      <created>1740107476159</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1740107476159</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +329,8 @@
     <MESSAGE value="updating logging to write to a file and implemented pooling" />
     <MESSAGE value="updated gitignore to ignore my log files" />
     <MESSAGE value="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed outdated files, updated menus, reimplemented Order functions, created 'manager' repos to limit imports" />
+    <MESSAGE value="Implemented the generateID Utility everywhere an ID is needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the generateID Utility everywhere an ID is needed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -5,66 +5,59 @@ import jakarta.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 @jakarta.persistence.Entity
-@Table(name = "lemonade-recipes")
+@Table(name = "lemonade_recipes")
 @Cacheable
 public class LemonadeRecipe extends Entity {
+
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "RecipeID")
 private int id;
 
 @ElementCollection
-@CollectionTable(name="recipe_products", joinColumns = @JoinColumn(name = "RecipeID"))
-@MapKeyJoinColumn(name = "ProductID")
-@Column(name = "Quantity")
-private Map<Product, Integer> productQuantities;
+@CollectionTable(
+		name = "lemonade_recipes",
+		joinColumns = @JoinColumn(name = "RecipeID")
+)
+@ManyToMany
+@JoinTable(
+		name = "lemonade_recipes",
+		joinColumns = @JoinColumn(name = "RecipeID"),
+		inverseJoinColumns = @JoinColumn(name = "ProductID")
+)
+private Map<Product, Integer> productQuantities = new HashMap<>();
+
 @ManyToOne
 @JoinColumn(name = "LemonadeID")
 private Lemonade lemonade;
 
+
+public LemonadeRecipe() {}
+
 public LemonadeRecipe(int id, Lemonade lemonade) {
 	this.id = id;
 	this.lemonade = lemonade;
-	this.productQuantities = new HashMap<>();
 }
 
-public LemonadeRecipe() {
-
+@Override
+public int getId() {
+	return id;
 }
 
 public Map<Product, Integer> getProductQuantities() {
 	return productQuantities;
 }
-public int getQuantity(int id) {
-	for (Map.Entry<Product, Integer> entry : productQuantities.entrySet()) {
-		if (entry.getKey().getId() == id) {
-			return entry.getValue();
-		}
-	}
-	return 0;
-}
-public Product getProduct(int id) {
-	for (Map.Entry<Product, Integer> entry : productQuantities.entrySet()) {
-		if (entry.getKey().getId() == id) {
-			return entry.getKey();
-		}
-	}
-	return null;
-}
+
+//getProducts() method
+
 public Lemonade getLemonade() {
 	return lemonade;
 }
 
 public void setLemonade(Lemonade lemonade) {
 	this.lemonade = lemonade;
-}
-
-public int getId() {
-	return id;
-}
-
-public void setId(int id) {
-	this.id = id;
 }
 
 public void addProduct(Product product, int quantity) {
@@ -77,14 +70,11 @@ public boolean equals(Object obj) {
 	if (obj == null || getClass() != obj.getClass()) return false;
 
 	LemonadeRecipe other = (LemonadeRecipe) obj;
-	return this.lemonade.equals(other.lemonade) && this.productQuantities.equals(other.productQuantities);
+	return Objects.equals(lemonade, other.lemonade) && Objects.equals(productQuantities, other.productQuantities);
 }
 
 @Override
 public int hashCode() {
 	return Objects.hash(lemonade, productQuantities);
 }
-
-
-
 }
